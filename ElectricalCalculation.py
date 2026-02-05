@@ -16,20 +16,20 @@ class ElectricalFormulae:
         return 1/Net
     
     @staticmethod
-    def voltage_divider(a:float|complex,R:np.array[complex|float], V:float|complex) -> float|complex:
+    def voltage_divider(a:float|complex,R:np.array, V:float|complex) -> float|complex:
         if a in R:
-            return a/sum(R)
+            return V*a/sum(R)
         
         raise ValueError("a not in given R")
     
     @staticmethod
-    def current_divider(a, R:np.array[float|complex] , J:float|complex) -> float|complex:
+    def current_divider(a, R:np.array , J:float|complex) -> float|complex:
         if a not in R:
             raise ValueError("a not in given R")
         
         if a!=0:
             reci_R = 1/R
-            return (1/a)/sum(reci_R)
+            return J*(1/a)/sum(reci_R)
         else:
             return 0
         
